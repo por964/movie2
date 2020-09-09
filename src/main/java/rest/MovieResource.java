@@ -49,22 +49,22 @@ public class MovieResource {
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAll() {
-        throw new UnsupportedOperationException();
+    public Response getAll() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllMovies())).build();
     }
 
     @Path("/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getById(@PathParam("id") int id) {
-        throw new UnsupportedOperationException();
+    public Response getById(@PathParam("id") int id) {
+        return Response.ok().entity(GSON.toJson(FACADE.getMovieById(id))).build();
     }
 
     @Path("title/{title}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getByTitle(@PathParam("title") String title) {
-        throw new UnsupportedOperationException();
+        return Response.ok().entity(GSON.toJson(FACADE.getMoviesByTitle(title))).build();
     }
     
 

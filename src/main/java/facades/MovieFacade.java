@@ -98,9 +98,9 @@ public class MovieFacade  {
         try {
             em.getTransaction().begin();
             em.createQuery("DELETE from Movie").executeUpdate();
-            em.persist(new Movie(2002, "Harry Potter and the Chamber of Secrets", new String[]{"Daniel Radcliffe", "Emma Watson", "Alan Rickman", "Rupert Grint"}));
-            em.persist(new Movie(2001, "Harry Potter and the Philosopher's Stone", new String[]{"Daniel Radcliffe", "Emma Watson","Alan Rickman", "Rupert Grint"}));
-            em.persist(new Movie(2019, "Once Upon a Time... in Hollywood", new String[]{"Leonardo DiCaprio", "Brad Pitt", "Margot Robbie"}));
+            em.persist(new Movie(2018, "Harry Potter and the Chamber of Secrets", new String[]{"Daniel Radcliffe", "Emma Watson", "Alan Rickman", "Rupert Grint"}));
+            em.persist(new Movie(2019, "Harry Potter and the Philosopher's Stone", new String[]{"Daniel Radcliffe", "Emma Watson","Alan Rickman", "Rupert Grint"}));
+            em.persist(new Movie(2020, "Once Upon a Time... in Hollywood", new String[]{"Leonardo DiCaprio", "Brad Pitt", "Margot Robbie"}));
             em.getTransaction().commit();
         } finally {
             em.close();
