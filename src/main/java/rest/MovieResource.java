@@ -6,7 +6,6 @@ import dtos.MovieDTO;
 
 //Make sure NOT to have any references to your Entity Classes here
 //import entities.Movie;
-
 import facades.MovieFacade;
 import java.util.List;
 
@@ -27,24 +26,23 @@ import utils.EMF_Creator;
 public class MovieResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-               
-    private static final MovieFacade FACADE =  MovieFacade.getMovieFacade(EMF);
+
+    private static final MovieFacade FACADE = MovieFacade.getMovieFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-            
+
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-    
+
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieCount() {
         long count = FACADE.getMovieCount();
-        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+        return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
-    
 
     @Path("all")
     @GET
@@ -66,14 +64,24 @@ public class MovieResource {
     public Response getByTitle(@PathParam("title") String title) {
         return Response.ok().entity(GSON.toJson(FACADE.getMoviesByTitle(title))).build();
     }
-    
+
+    @Path("notitle/{title}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getByNoTitle(@PathParam("title") String title) {
+        List<MovieDTO> movies = FACADE.getMoviesByTitle(title);
+        if (movies == null || movies.isEmpty()) {
+            return Response.status(404).entity("{\"code\":404,\"msg\":\"Movie not found\"}").build();
+        }
+        return Response.ok(GSON.toJson(movies)).build();
+    }
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public String create(MovieDTO movie) {
-      throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
-    
+
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON})

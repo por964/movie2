@@ -133,7 +133,14 @@ public class MovieResourceTest {
 
     @Test
     public void testGetAll() {
-        //TODO
+        given()
+                .when().
+                get("/movie/all")
+                .then().
+                assertThat().body("title",
+                        hasItems("Harry Potter and the Philosopher's Stone",
+                                "Harry Potter and the Chamber of Secrets",
+                                "Once Upon a Time... in Hollywood"));
     }
 
     
@@ -149,10 +156,11 @@ public class MovieResourceTest {
     
      @Test
     public void testFindById() {
-        //given().get("/movie/{id}", m2.getId())
+        given().get("/movie/{id}", m2.getId());
         //TODO
           
     }
+    
 }
 
 
