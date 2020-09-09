@@ -13,8 +13,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
-
 @Entity
+@NamedQueries({
+@NamedQuery(name = "Movie.deleteAllRows", query = "DELETE from Movie"),
+@NamedQuery(name = "Movie.getAll", query = "SELECT m FROM Movie m"),
+@NamedQuery(name = "Movie.getByName", query = "SELECT m FROM Movie m WHERE m.title LIKE :title")
+})
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;

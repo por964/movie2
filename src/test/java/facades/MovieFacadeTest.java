@@ -1,14 +1,18 @@
 package facades;
 
+import dtos.MovieDTO;
 import utils.EMF_Creator;
 import entities.Movie;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.hamcrest.Matchers;
 import static org.hamcrest.Matchers.arrayContaining;
 import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -71,22 +75,27 @@ public class MovieFacadeTest {
     
     @Test
     public void testGetAllMovies(){
-        //Tode
+        List<MovieDTO> movie = facade.getAllMovies();
+        assertThat(movie, hasSize(3));
     }
 
     @Test
     public void testGetMovieById(){
-        //Todo
+        MovieDTO movie = facade.getMovieById(m3.getId());
+        assertEquals("Once Upon a Time... in Hollywood", movie.getTitle());
     }
     
     @Test
     public void testMovieHasActors(){
         //You could use the method: arrayContaining(....(JPA)
+        MovieDTO movie = facade.getMovieById(m2.getId());
+        assertThat(movie.getActors(), Matchers.hasItemInArray("Daniel Radcliffe"));
     }
     
     @Test
     public void getMoviesByTitle(){
-        //Todo
+        List<MovieDTO> movie = facade.getMoviesByTitle(m1.getTitle()); 
+        assertEquals("Harry Potter and the Philosopher's Stone", movie.get(0).getTitle());
     }
 
 
