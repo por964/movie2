@@ -123,6 +123,12 @@ public class Movie implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" + "id=" + id + ", year=" + year + ", title=" + title + ", actors=" + Arrays.toString(actors) + ", created=" + created + ", lastEdited=" + lastEdited + ", createdByUser=" + createdByUser + ", editedByUser=" + editedByUser + '}';
+    }
+    
+
    
     
 }
