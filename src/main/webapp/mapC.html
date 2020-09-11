@@ -1,0 +1,58 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <ul id="demo"></ul>
+        <br>
+        <form id="frm1" action="/action_page.php">
+            Fornavn: <input type="text" name="fname" id="item"><br>
+            <input type="button" onclick="addItem()" value="submit"/>
+        </form>
+        <br>
+        <form id="frm2" action="/action_page.php">
+            <input type="button" onclick="removeFirst()" value="Remove first"/>
+        </form>
+        <br>
+        <form id="frm3" action="/action_page.php">
+            <input type="button" onclick="removeLast()" value="Remove last"/>
+        </form>
+
+
+        <script>
+            var names = ["Peter", "Hans", "Ole", "Lars", "Jan", "Bo", "Frederik"];
+
+            let list = names.map(function (name) {
+                return "<li>" + name + "</li>";
+            });
+            //let namesAsString = "<ul>" + list.join("") + "<ul>";
+
+            let joined = list.join("");
+
+            document.getElementById("demo").innerHTML = joined;
+
+
+            function addItem() {
+                var ul = document.getElementById("demo");
+                var item = document.getElementById("item");
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(item.value));
+                ul.appendChild(li);
+                document.getElementById("demo").appendChild(li);
+            }
+
+            function removeFirst() {
+                let demo = document.getElementById("demo");
+                demo.removeChild(demo.firstElementChild);
+            }
+            
+            function removeLast() {
+                let demo = document.getElementById("demo");
+                demo.removeChild(demo.lastElementChild);
+            }
+        </script>
+    </body>
+</html>

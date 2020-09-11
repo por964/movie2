@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+        <!--Table-->
+        <div class="container">
+  <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Year</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="datas">
+
+            </tbody>
+
+
+
+        </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <form id="frm1" action="/action_page.php"><div style="text-align:center;">
+            Show cars with price less than: <input type="text" name="px" id="price">
+            <input type="button" onclick="filterPrice()" value="submit"/></div>
+        </form>
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}];
+
+
+                var table = document.getElementById("datas");
+                table.innerHTML = "";
+                var tr = "";
+                cars.forEach(x => {
+                    tr += '<tr>';
+                    tr += '<td>' + x.id + '</td>' + '<td>' + x.year + '</td>' + '<td>' + x.make + '</td> ' + '<td>' + x.model + '</td> '+'<td>' + x.price + '</td> ' 
+                    tr += '</tr>'
+
+                })
+                table.innerHTML += tr;
+                
+                
+
+                // Reset the table
+                //table.innerHTML = "";
+
+
+
+
+        </script>
+    </body>
+</html>
