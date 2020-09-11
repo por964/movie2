@@ -38,6 +38,11 @@ public class MovieDTO {
     public String[] getActors() {
         return actors;
     }
+
+    @Override
+    public String toString() {
+        return "MovieDTO{" + "id=" + id + ", year=" + year + ", title=" + title + ", actors=" + actors + '}';
+    }
     
    
     
