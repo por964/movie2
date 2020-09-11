@@ -1,16 +1,39 @@
 [![Build Status](https://travis-ci.org/dat3startcode/rest-jpa-devops-startcode.svg?branch=master)](https://travis-ci.org/dat3startcode/rest-jpa-devops-startcode)
 
-*This project is meant as start code for projects and exercises given in Flow-1+2 at http://cphbusiness.dk in the Study Program "AP degree in Computer Science"*
+WEEK 37:
 
-*Projects which are expected to use this start-code are projects that require all, or most of the following technologies:*
- - *JPA and REST*
-- *Testing, including database test*
-- *Testing, including tests of REST-API's*
-- *CI and CONTINUOUS DELIVERY*
+Exercises wednesday: 
 
-### Preconditions
-*In order to use this code, you should have a local developer setup + a "matching" droplet on Digital Ocean as described in the 3. semester guidelines* 
-# Getting Started
+Javascript array: https://github.com/por964/movie2/blob/master/src/main/webapp/demo1.js
+Javascript functions: https://github.com/por964/movie2/blob/master/src/main/webapp/demo2.js
+Javascript functions with callback: https://github.com/por964/movie2/blob/master/src/main/webapp/callback.js
+Javascript callback cars: https://github.com/por964/movie2/blob/master/src/main/webapp/cars.js
 
-This document explains how to use this code (build, test and deploy), locally with maven, and remotely with maven controlled by Travis
+Simple DOM a): https://www.claesvonh.dk/movies2/simpleDOM.html
+Simple DOM b): https://www.claesvonh.dk/movies2/mapAandB.html
+				https://www.claesvonh.dk/movies2/mapC.html
+Bubbling a,b,c : https://www.claesvonh.dk/movies2/bubblingA.html
+				https://www.claesvonh.dk/movies2/bubblingB.html
+				https://www.claesvonh.dk/movies2/bubblingC.html
+Cars with filter: https://www.claesvonh.dk/movies2/carsFilter.html								
+
+Running movie project with REST:
+https://www.claesvonh.dk/movies2/api/movie/all
+https://www.claesvonh.dk/movies2/api/movie/5
+https://www.claesvonh.dk/movies2/api/movie/count
+https://www.claesvonh.dk/movies2/api/movie/title/Harry%20Potter%20and%20the%20Chamber%20of%20Secrets
+
+Travis: https://travis-ci.org/github/por964
+
+
+
+
+
+
+
+
+
+
+
+
  - [How to use](https://docs.google.com/document/d/1K6s6Tt65bzB8bCSE_NUE8alJrLRNTKCwax3GEm4OjOE/edit?usp=sharing)
