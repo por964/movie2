@@ -5,8 +5,11 @@ WEEK 37:
 Exercises wednesday: 
 
 Javascript array: https://github.com/por964/movie2/blob/master/src/main/webapp/demo1.js
+
 Javascript functions: https://github.com/por964/movie2/blob/master/src/main/webapp/demo2.js
+
 Javascript functions with callback: https://github.com/por964/movie2/blob/master/src/main/webapp/callback.js
+
 Javascript callback cars: https://github.com/por964/movie2/blob/master/src/main/webapp/cars.js
 
 Simple DOM a): https://www.claesvonh.dk/movies2/simpleDOM.html
