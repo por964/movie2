@@ -13,34 +13,35 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
+
         <!--Table-->
         <div class="container">
-  <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Year</th>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody id="datas">
-
-            </tbody>
-
-
-
-        </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="datas">
+                </tbody>
+            </table>
         </div>
+
         <br>
         <br>
         <br>
-        <form id="frm1" action="/action_page.php"><div style="text-align:center;">
-            Show cars with price less than: <input type="text" name="px" id="price">
-            <input type="button" onclick="filterPrice()" value="submit"/></div>
-        </form>
+
+        <br>
+
+        <br>
+        <br>
+        <label for="price">Filter by price:</label><input type="text" id="fprice">  
+        <input type="submit" value="submit" id="filterPrice">
+
         <script>
             var cars = [
                 {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
@@ -50,21 +51,34 @@
                 {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}];
 
 
+            function loadTable(data) {
                 var table = document.getElementById("datas");
                 table.innerHTML = "";
                 var tr = "";
-                cars.forEach(x => {
+                data.forEach(x => {
                     tr += '<tr>';
-                    tr += '<td>' + x.id + '</td>' + '<td>' + x.year + '</td>' + '<td>' + x.make + '</td> ' + '<td>' + x.model + '</td> '+'<td>' + x.price + '</td> ' 
+                    tr += '<td>' + x.id + '</td>' + '<td>' + x.year + '</td>' + '<td>' + x.make + '</td> ' + '<td>' + x.model + '</td> ' + '<td>' + x.price + '</td> '
                     tr += '</tr>'
 
                 })
                 table.innerHTML += tr;
-                
-                
+            }
 
-                // Reset the table
-                //table.innerHTML = "";
+            window.onload = () => {
+                loadTable(cars);
+            }
+
+            function filterPrice() {
+                var filteredPrice = document.getElementById("fprice").value;
+                var carsFilteredByPrice = cars.filter(function (car) {
+                    return car.price < filteredPrice;
+                })
+                loadTable(carsFilteredByPrice);
+                document.getElementById("fprice").value = "";
+            }
+
+            document.getElementById("filterPrice").addEventListener("click", filterPrice);
+
 
 
 
