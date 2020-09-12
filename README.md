@@ -2,6 +2,8 @@
 
 WEEK 37:
 
+Code for each exercise here: https://github.com/por964/movie2/tree/master/src/main/webapp
+
 Exercises wednesday: 
 
 Javascript array: https://github.com/por964/movie2/blob/master/src/main/webapp/demo1.js
@@ -37,6 +39,8 @@ https://www.claesvonh.dk/movies2/api/movie/count
 https://www.claesvonh.dk/movies2/api/movie/title/Harry%20Potter%20and%20the%20Chamber%20of%20Secrets
 
 Travis: https://travis-ci.org/github/por964
+
+Status: I have not finished "Dynamic UI manipulation using data obtained via fetch" and "Add a JavaScript-driven frontend to your REST-API"
 
 
 
