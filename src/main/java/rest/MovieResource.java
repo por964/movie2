@@ -47,22 +47,26 @@ public class MovieResource {
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getAll() {
-        return Response.ok().entity(GSON.toJson(FACADE.getAllMovies())).build();
+    public String getAll() {
+        return GSON.toJson(FACADE.getAllMovies());
     }
 
     @Path("/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getById(@PathParam("id") int id) {
-        return Response.ok().entity(GSON.toJson(FACADE.getMovieById(id))).build();
+    public String getById(@PathParam("id") int id) {
+        return GSON.toJson(FACADE.getMovieById(id));
     }
 
     @Path("title/{title}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getByTitle(@PathParam("title") String title) {
-        return Response.ok().entity(GSON.toJson(FACADE.getMoviesByTitle(title))).build();
+        List<MovieDTO> movies =FACADE.getMoviesByTitle(title);
+        if (movies == null || movies.isEmpty()) {
+            return Response.status(404).entity("{\"code\":404,\"msg\":\"Movie not found\"}").build();
+        }
+        return Response.ok(GSON.toJson(movies)).build();
     }
 
     @Path("notitle/{title}")
@@ -79,7 +83,8 @@ public class MovieResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public String create(MovieDTO movie) {
-        throw new UnsupportedOperationException();
+        MovieDTO result = FACADE.createMovie(movie.getYear(), movie.getTitle(), movie.getActors());
+        return GSON.toJson(result);
     }
 
     @PUT

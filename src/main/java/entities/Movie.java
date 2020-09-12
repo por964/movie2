@@ -47,7 +47,7 @@ public class Movie implements Serializable {
         
         this.created = new Date();
         this.lastEdited = new Date();
-        this.createdByUser = "Julius-Caesar";
+        this.createdByUser = "Claes Lindholm";
         this.editedByUser = "";
         
     }

@@ -76,7 +76,8 @@ public class MovieFacadeTest {
     @Test
     public void testGetAllMovies(){
         List<MovieDTO> movie = facade.getAllMovies();
-        assertThat(movie, hasSize(3));
+        assertEquals(3,facade.getMovieCount(),"Expects 3 movies in db");
+        assertThat(movie,everyItem(hasProperty("title")));
     }
 
     @Test

@@ -137,7 +137,9 @@ public class MovieResourceTest {
                 .when().
                 get("/movie/all")
                 .then().
-                assertThat().body("title",
+                assertThat()
+                .body("size()", equalTo(3))
+                .body("title",
                         hasItems("Harry Potter and the Philosopher's Stone",
                                 "Harry Potter and the Chamber of Secrets",
                                 "Once Upon a Time... in Hollywood"));
@@ -146,18 +148,27 @@ public class MovieResourceTest {
     
     @Test
     public void testFindByTitle() {
-        //TODO
+        given().get("/movie/title/Potter")
+        .then()
+                .assertThat()
+                .body("title", hasItems("Harry Potter and the Philosopher's Stone","Harry Potter and the Chamber of Secrets"));
     }
     
     @Test
     public void testFindByTitleNotFound() {
-       //TODO, if you have time
+       given().get("movie/title/zzzzzz")
+               .then()
+               .assertThat()
+               .statusCode(404)
+               .body("msg", equalTo("Movie not found"));
     }
     
      @Test
     public void testFindById() {
-        given().get("/movie/{id}", m2.getId());
-        //TODO
+        given().get("/movie/{id}", m2.getId())
+        .then()
+                .assertThat()
+                .body("title", equalTo("Harry Potter and the Chamber of Secrets"));
           
     }
     
