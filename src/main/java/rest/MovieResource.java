@@ -33,7 +33,7 @@ public class MovieResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
-        return "{\"msg\":\"Hello World\"}";
+        return "{\"msg\":\"This is not a movie\"}";
     }
 
     @Path("count")
@@ -47,15 +47,15 @@ public class MovieResource {
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAll() {
-        return GSON.toJson(FACADE.getAllMovies());
+    public Response getAll() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllMovies())).build();
     }
 
     @Path("/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getById(@PathParam("id") int id) {
-        return GSON.toJson(FACADE.getMovieById(id));
+    public Response getById(@PathParam("id") int id) {
+        return Response.ok().entity(GSON.toJson(FACADE.getMovieById(id))).build();
     }
 
     @Path("title/{title}")
@@ -66,7 +66,7 @@ public class MovieResource {
         if (movies == null || movies.isEmpty()) {
             return Response.status(404).entity("{\"code\":404,\"msg\":\"Movie not found\"}").build();
         }
-        return Response.ok(GSON.toJson(movies)).build();
+        return Response.ok().entity(GSON.toJson(movies)).build();
     }
 
     @Path("notitle/{title}")
