@@ -28,7 +28,7 @@ https://www.claesvonh.dk/movies2/bubblingC.html
 
 Cars with filter: https://www.claesvonh.dk/movies2/carsFilter.html
 
-Using fetch 1st time:  https://www.claesvonh.dk/firstRest.html								
+Using fetch 1st time:  https://www.claesvonh.dk/firstFetch.html								
 
 Running movie project with REST:
 
