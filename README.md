@@ -42,6 +42,8 @@ https://www.claesvonh.dk/movies2/api/movie/title/Harry%20Potter%20and%20the%20Ch
 
 Travis: https://travis-ci.org/github/por964
 
+Using fetch on movie project: https://www.claesvonh.dk/movies2/movieFetch.html
+
 
 
 Status: I have not finished "Dynamic UI manipulation using data obtained via fetch" and "Add a JavaScript-driven frontend to your REST-API"
