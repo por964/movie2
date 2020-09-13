@@ -101,6 +101,13 @@ public class MovieFacade  {
             em.persist(new Movie(2018, "Harry Potter and the Chamber of Secrets", new String[]{"Daniel Radcliffe", "Emma Watson", "Alan Rickman", "Rupert Grint"}));
             em.persist(new Movie(2019, "Harry Potter and the Philosopher's Stone", new String[]{"Daniel Radcliffe", "Emma Watson","Alan Rickman", "Rupert Grint"}));
             em.persist(new Movie(2020, "Once Upon a Time... in Hollywood", new String[]{"Leonardo DiCaprio", "Brad Pitt", "Margot Robbie"}));
+            em.persist(new Movie(1974, "Chinatown", new String[]{"Jack Nicholson", "Faye Dunaway", "John Huston"}));
+            em.persist(new Movie(1981, "Das Boot", new String[]{"Jürgen Prochnow", "Herbert Grönemeyer", "Klaus Wennemann"}));
+            em.persist(new Movie(1979, "Apocalypse Now", new String[]{"Martin Sheen", "Marlon Brando", "Robert Duvall"}));
+            em.persist(new Movie(1987, "Wall Street", new String[]{"Charlie Sheen", "Michael Douglas", "Tamara Tunie"}));
+            em.persist(new Movie(2000, "Traffic", new String[]{"Michael Douglas", "Benicio Del Toro", "Catherine Zeta-Jones"}));
+            em.persist(new Movie(1965, "The Spy Who Came In From The Cold", new String[]{"Richard Burton", "Oskar Werner", "Claire Bloom"}));
+            em.persist(new Movie(1974, "The Parallax View", new String[]{"Warren Beatty", "Paula Prentiss", "William Daniels"}));
             em.getTransaction().commit();
         } finally {
             em.close();
