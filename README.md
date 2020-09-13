@@ -26,7 +26,9 @@ https://www.claesvonh.dk/movies2/bubblingB.html
 
 https://www.claesvonh.dk/movies2/bubblingC.html
 
-Cars with filter: https://www.claesvonh.dk/movies2/carsFilter.html								
+Cars with filter: https://www.claesvonh.dk/movies2/carsFilter.html
+
+Using fetch 1st time:  https://www.claesvonh.dk/firstRest.html								
 
 Running movie project with REST:
 
@@ -39,6 +41,8 @@ https://www.claesvonh.dk/movies2/api/movie/count
 https://www.claesvonh.dk/movies2/api/movie/title/Harry%20Potter%20and%20the%20Chamber%20of%20Secrets
 
 Travis: https://travis-ci.org/github/por964
+
+
 
 Status: I have not finished "Dynamic UI manipulation using data obtained via fetch" and "Add a JavaScript-driven frontend to your REST-API"
 
