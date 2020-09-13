@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fetch</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="res/styles.css">
+    </head>
+    <body class='container center'>
+        <h1>Customers:</h1>
+        <!--Table-->
+        <label for="user">User: </label>
+        <input type="text" id="user">
+
+        <button class="btn btn-primary" id="getUser">Get user</button>
+        <button class="btn btn-primary" id="getAll">Get all</button>
+        <br>
+        <br>
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Street</th>
+                        <th>Suite</th>
+                        <th>City</th>
+                        <th>ZIP</th>
+                        <th>Lattitude</th>
+                        <th>Longitude</th>
+                        <th>Phone</th>
+                        <th>Website</th>
+                        <th>Company name</th>
+                        <th>Catchphrase</th>
+                        <th>bs</th>
+                    </tr>
+                </thead>
+                <tbody id="datas">
+                </tbody>
+            </table>
+        </div>
+        <script>
+
+
+            let url = "https://jsonplaceholder.typicode.com/users/";
+
+            getAll.onclick = function () {
+                fetch(url)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => loadAll(data));
+                console.log("data", data);
+            };
+
+            getUser.onclick = function () {
+                var input = document.getElementById("user").value;
+                let url2 = url+ input;
+
+                fetch(url2)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => loadUser(data));
+                console.log("data", data);
+
+            };
+
+            function loadAll(data) {
+                var table = document.getElementById("datas");
+                table.innerHTML = "";
+                var tr = "";
+                data.forEach(x => {
+                    tr += '<tr>';
+                    tr += '<td>' + x.id + '</td>' + '<td>' + x.name + '</td>' + '<td>' + x.username + 
+                        '</td>' + '<td>' + x.email + '</td>'+ '<td>' + x.address.street + '</td> ' + '<td>' + x.address.suite + '</td> ' + '<td>' 
+                        + x.address.city + '</td> ' + '<td>' + x.address.zipcode +
+                        '<td>' + x.address.geo.lat + '</td> '+ '<td>' + x.address.geo.lng + '</td> '+'</td> ' + '<td>' 
+                        + x.phone + '</td> '+ '<td>' + x.website + '</td> '+ '<td>' + x.company.name + '</td> '+ '<td>' 
+                        + x.company.catchPhrase + '</td> '+ '<td>' + x.company.bs + '</td> ';
+                    tr += '</tr>';
+                });
+                table.innerHTML += tr;
+                console.log(tr);
+            }
+
+            function loadUser(data) {
+                var table = document.getElementById("datas");
+                table.innerHTML = "";
+                var tr = "";
+                tr = '<tr>' + '<td>' + data.id + '</td>' + '<td>' + data.name + '</td>' + '<td>' + data.username + 
+                        '</td>' + '<td>' + data.email + '</td>'+ '<td>' + data.address.street + '</td> ' + '<td>' + data.address.suite + '</td> ' + '<td>' 
+                        + data.address.city + '</td> ' + '<td>' + data.address.zipcode +
+                        '<td>' + data.address.geo.lat + '</td> '+ '<td>' + data.address.geo.lng + '</td> '+'</td> ' + '<td>' 
+                        + data.phone + '</td> '+ '<td>' + data.website + '</td> '+ '<td>' + data.company.name + '</td> '+ '<td>' 
+                        + data.company.catchPhrase + '</td> '+ '<td>' + data.company.bs + '</td> ' + '</tr>';
+                table.innerHTML = tr;
+                console.log(tr);
+            }
+
+
+        </script>
+    </body>
+</html>
