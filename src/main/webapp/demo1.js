@@ -5,7 +5,9 @@ var girls = ["Janne", "hanne", "Sanne"];
 
 console.log(boys);
 //Opg b
-const all = boys.concat(girls);
+var all = boys.concat(girls);
+
+let all = [...boys,"Karl",...girls];
 
 console.log(all);
 
