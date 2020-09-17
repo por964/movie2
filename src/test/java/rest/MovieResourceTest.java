@@ -33,7 +33,7 @@ public class MovieResourceTest {
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
     private static EntityManagerFactory emf;
-    
+
     private Movie m1;
     private Movie m2;
     private Movie m3;
@@ -46,25 +46,19 @@ public class MovieResourceTest {
     @BeforeAll
     public static void setUpClass() {
         //First Drop and Rebuild the test database 
+        EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactoryForTest();
 
-        //Set System property so the project executed by the Grizly-server wil use this same database
-        EMF_Creator.startREST_TestWithDB();
-        
         httpServer = startServer();
-
         //Setup RestAssured
         RestAssured.baseURI = SERVER_URL;
         RestAssured.port = SERVER_PORT;
-
         RestAssured.defaultParser = Parser.JSON;
     }
 
     @AfterAll
-    public static void closeTestServer()  {
-       
-       // System.in.read();
-       
+    public static void closeTestServer() {
+        // System.in.read();
         httpServer.shutdownNow();
         //Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
@@ -105,6 +99,7 @@ public class MovieResourceTest {
                 then().assertThat().
                 statusCode(200);
     }
+
     @Test
     public void contentType() {
         //Gherkin Syntax
@@ -112,12 +107,12 @@ public class MovieResourceTest {
         //Hamcrest matcher
         given().when().get("/movie").then().assertThat().contentType(ContentType.JSON);
     }
-    
+
     @Test
     public void demonStrateLogging() {
-        
+
         given().log().all().when().get("/movie").then().log().body();
-       
+
     }
 
     @Test
@@ -145,34 +140,30 @@ public class MovieResourceTest {
                                 "Once Upon a Time... in Hollywood"));
     }
 
-    
     @Test
     public void testFindByTitle() {
         given().get("/movie/title/Potter")
-        .then()
+                .then()
                 .assertThat()
-                .body("title", hasItems("Harry Potter and the Philosopher's Stone","Harry Potter and the Chamber of Secrets"));
+                .body("title", hasItems("Harry Potter and the Philosopher's Stone", "Harry Potter and the Chamber of Secrets"));
     }
-    
+
     @Test
     public void testFindByTitleNotFound() {
-       given().get("movie/title/zzzzzz")
-               .then()
-               .assertThat()
-               .statusCode(404)
-               .body("msg", equalTo("Movie not found"));
+        given().get("movie/title/zzzzzz")
+                .then()
+                .assertThat()
+                .statusCode(404)
+                .body("msg", equalTo("Movie not found"));
     }
-    
-     @Test
+
+    @Test
     public void testFindById() {
         given().get("/movie/{id}", m2.getId())
-        .then()
+                .then()
                 .assertThat()
                 .body("title", equalTo("Harry Potter and the Chamber of Secrets"));
-          
+
     }
-    
+
 }
-
-
- 
