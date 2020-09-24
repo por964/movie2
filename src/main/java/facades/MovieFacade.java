@@ -37,7 +37,7 @@ public class MovieFacade  {
     }
 
     public long getMovieCount() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         try {
             long movieCount = (long) em.createQuery("SELECT COUNT(m) FROM Movie m").getSingleResult();
             return movieCount;
@@ -47,7 +47,7 @@ public class MovieFacade  {
     }
 
     public List<MovieDTO> getAllMovies() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         TypedQuery<Movie> query =  em.createQuery("SELECT m FROM Movie m",Movie.class);
         List<Movie> movies = query.getResultList();
         List<MovieDTO> movieDTOs = new ArrayList();
@@ -58,7 +58,7 @@ public class MovieFacade  {
     }
 
     public List<MovieDTO> getMoviesByTitle(String title) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m WHERE m.title LIKE :title", Movie.class);
         query.setParameter("title", "%"+title+"%");
         List<Movie> movies = query.getResultList();
@@ -71,14 +71,14 @@ public class MovieFacade  {
 
 
     public MovieDTO getMovieById(int id) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         Movie m=  em.find(Movie.class, id);
         return new MovieDTO(m);
     }
 
     public MovieDTO createMovie(int year, String name, String[] actors) {
         Movie movie = new Movie(year,name,actors);
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         try{
             em.getTransaction().begin();
             em.persist(movie);
